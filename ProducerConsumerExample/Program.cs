@@ -39,7 +39,7 @@ public class MessagingService
 
     public MessagingService()
     {
-        // This Task will run until the program is shut down
+        // This Task will run until the program is shut down, this should service should always be a Singleton
         Task.Run(Worker);
     }
 
