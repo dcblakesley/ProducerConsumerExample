@@ -24,11 +24,11 @@ internal class Program
         Console.WriteLine();
         Console.WriteLine("Enter Messages");
         var inputText = "";
-        while (inputText != "z")
+        while (inputText != "x")
         {
             inputText = Console.ReadLine();
-            var m = new Message() { Text = inputText };
-            _ = messagingService.SendMessage(m); // Throwing away the response because we can't do anything if SignalR crashes.
+            var message = new Message() { Text = inputText };
+            _ = messagingService.SendMessage(message); // Throwing away the response because we can't do anything if SignalR crashes.
         }
     }
 }
