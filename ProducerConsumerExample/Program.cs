@@ -28,7 +28,7 @@ internal class Program
         {
             inputText = Console.ReadLine();
             var m = new Message() { Text = inputText };
-            messagingService.SendMessage(m);
+            _ = messagingService.SendMessage(m); // Throwing away the response because we can't do anything if SignalR crashes.
         }
     }
 }
@@ -44,7 +44,7 @@ public class MessagingService
     }
 
     /// <summary> This just puts the Message in a queue and immediately returns without waiting on the work to occur </summary>
-    public void SendMessage(Message message) => _channel.Writer.TryWrite(message);
+    public bool SendMessage(Message message) => _channel.Writer.TryWrite(message);
         
     /// <summary> This is a Worker and the Consumer of SendMessage</summary>
     public async Task Worker()
